@@ -8,12 +8,10 @@ from cli.colors import Colors
 from cli.messages import Messages
 
 class CirtNet(Collector):
-    def __init__(self, base_url=None):
-        self.base_url = base_url if base_url else "https://cirt.net/passwords"
-    
-    def run(self) -> List[Intel]:      
-        res = httpx.request("GET", self.base_url)
-        print(Messages["collector.connected"](self.base_url))
+    def run(self) -> List[Intel]:  
+        url = "https://cirt.net/passwords"
+        res = httpx.request("GET", url)
+        print(Messages["collector.connected"](url))
         data = BeautifulSoup(res.text, 'html.parser')
         td_tags = data.find_all('td')
 
@@ -29,7 +27,7 @@ class CirtNet(Collector):
                         "vendor": vendor
                     })
         
-        session = httpx.Client(base_url=self.base_url)
+        session = httpx.Client(base_url=url)
         
         intels = []
         vendors_len = len(vendors)
@@ -46,7 +44,7 @@ class CirtNet(Collector):
             
             intel = IntelFactory.make({
                 "label": vendor["vendor"],
-                "source": self.base_url+vendor["href"],
+                "source": url+vendor["href"],
                 "pages": pages
             })
             

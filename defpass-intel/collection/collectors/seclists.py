@@ -8,9 +8,6 @@ from factory.intel_factory import IntelFactory
 from cli.messages import Messages
 
 class SecLists(Collector):
-    def __init__(self, base_url=None):
-        self.base_url = base_url if base_url else "https://github.com"
-        
     def __urls(self):
         return {
             ("MANUAL_SCADA", "/danielmiessler/SecLists/master/Passwords/Default-Credentials/scada-pass.csv"),
@@ -37,11 +34,11 @@ class SecLists(Collector):
         
     
     def run(self) -> List[Intel]:
-        autourls = self.base_url + "/danielmiessler/SecLists/tree/master/Passwords/Default-Credentials/Routers"
+        autourls = "https://github.com/danielmiessler/SecLists/tree/master/Passwords/Default-Credentials/Routers"
         base_raw = "https://raw.githubusercontent.com"
         intels = []
         res = httpx.request("GET", autourls)
-        print(Messages["collector.connected"](self.base_url))
+        print(Messages["collector.connected"](autourls))
                 
         session = httpx.Client(base_url=base_raw)
         print(Messages["collector.connected"](base_raw))
@@ -79,7 +76,7 @@ class SecLists(Collector):
                 
                 intel = IntelFactory.make({
                     "label": label,
-                    "source": self.base_url + href,
+                    "source": base_raw + href,
                     "pages": pages,
                 })
                 
@@ -102,7 +99,7 @@ class SecLists(Collector):
             
             intel = IntelFactory.make({
                 "label": label,
-                "source": self.base_url + href,
+                "source": base_raw + href,
                 "pages": pages,
             })
             
