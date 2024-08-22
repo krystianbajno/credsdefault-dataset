@@ -1,6 +1,6 @@
 
 class Credentials:
-    def __init__(self, model, manufacturer, version, role, login, password, method):
+    def __init__(self, model: str, manufacturer: str, version: str, role: str, login: str, password: str, method, source):
         self.manufacturer = manufacturer
         self.model = model
         self.version = version
@@ -8,11 +8,12 @@ class Credentials:
         self.login = login
         self.password = password
         self.method = method
+        self.source = source
         
-    def set_manufacturer(self, manufacturer): 
+    def set_manufacturer(self, manufacturer: str): 
         self.manufacturer = manufacturer
     
-    def set_role(self, role):
+    def set_role(self, role: str) -> None:
         self.role = role
     
     def set_method(self, method):
@@ -29,5 +30,8 @@ class Credentials:
         
     def set_model(self, model):
         self.model = model
+        
+    def set_source(self, source):
+        self.source = source
         
     
