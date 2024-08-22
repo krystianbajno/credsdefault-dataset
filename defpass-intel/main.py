@@ -2,19 +2,19 @@ from collection.collectors.data_recovery import DataRecovery
 from collection.collectors.cirt_net import CirtNet
 from collection.collectors.default_creds_github_ihebski import DefaultCredsGithubIHebski
 from collection.collectors.seclists import SecLists
-
+from collection.collectors.routersploit_keys import RouterSploitKeys
 from repository.intel_repository import IntelRepository
-from cli.colors import Colors
 from cli.messages import Messages
 
 def collect():
     intel_repository = IntelRepository()
     
     collectors = [
-        DataRecovery("https://datarecovery.com/rd/default-passwords/"),
-        CirtNet("https://cirt.net/passwords"),
-        DefaultCredsGithubIHebski("https://raw.githubusercontent.com/ihebski/DefaultCreds-cheat-sheet/main/DefaultCreds-Cheat-Sheet.csv"),
-        SecLists("https://github.com")
+        DataRecovery(),
+        CirtNet(),
+        DefaultCredsGithubIHebski(),
+        SecLists(),
+        RouterSploitKeys()
     ]
     
     data = []

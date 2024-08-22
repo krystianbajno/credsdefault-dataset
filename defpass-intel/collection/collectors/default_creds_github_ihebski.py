@@ -7,7 +7,7 @@ from factory.intel_factory import IntelFactory
 from cli.messages import Messages
 
 class DefaultCredsGithubIHebski(Collector):
-    def __init__(self, base_url):
+    def __init__(self, base_url=None):
         self.base_url = base_url if base_url else "https://raw.githubusercontent.com/ihebski/DefaultCreds-cheat-sheet/main/DefaultCreds-Cheat-Sheet.csv"
         self.__label = "DefaultCredsGithubIHebski"
     

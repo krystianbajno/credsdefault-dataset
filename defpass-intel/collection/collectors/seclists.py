@@ -8,7 +8,7 @@ from factory.intel_factory import IntelFactory
 from cli.messages import Messages
 
 class SecLists(Collector):
-    def __init__(self, base_url):
+    def __init__(self, base_url=None):
         self.base_url = base_url if base_url else "https://github.com"
         
     def __urls(self):
@@ -35,11 +35,9 @@ class SecLists(Collector):
             ("MANUAL_SAP_DefaultUsernames", "/danielmiessler/SecLists/master/Usernames/sap-default-usernames.txt")
         }
         
-    def __autourls(self):
-        return "/danielmiessler/SecLists/tree/master/Passwords/Default-Credentials/Routers"
     
     def run(self) -> List[Intel]:
-        autourls = self.base_url + self.__autourls()
+        autourls = self.base_url + "/danielmiessler/SecLists/tree/master/Passwords/Default-Credentials/Routers"
         base_raw = "https://raw.githubusercontent.com"
         intels = []
         res = httpx.request("GET", autourls)

@@ -8,7 +8,7 @@ from cli.colors import Colors
 from cli.messages import Messages
 
 class DataRecovery(Collector):
-    def __init__(self, base_url):
+    def __init__(self, base_url=None):
         self.base_url = base_url if base_url else "https://datarecovery.com/rd/default-passwords/"
         self.__label = "Data-Recovery-Homepage"
     
