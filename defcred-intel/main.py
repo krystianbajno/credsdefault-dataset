@@ -1,3 +1,4 @@
+from collection.collector import Collector
 from collection.collectors.data_recovery import DataRecovery
 from collection.collectors.cirt_net import CirtNet
 from collection.collectors.default_creds_github_ihebski import DefaultCredsGithubIHebski
@@ -9,14 +10,17 @@ from collection.collectors.ics_default_passwords import IcsDefaultPasswords
 from collection.collectors.qualys import QualysPDF
 from collection.collectors.passwords_database import PasswordsDatabase
 from collection.collectors.many_passwords import ManyPasswords
-
+from collection.collectors.defpass import DefPass
 from repository.intel_repository import IntelRepository
+from models.intel import Intel
+from typing import List
+
 from cli.messages import Messages
 
-def collect():
+def collect() -> List[Intel]:
     intel_repository = IntelRepository()
     
-    collectors = [
+    collectors: List[Collector] = [
         DataRecovery(),
         CirtNet(),
         DefaultCredsGithubIHebski(),
@@ -27,7 +31,8 @@ def collect():
         IcsDefaultPasswords(),
         QualysPDF(),
         PasswordsDatabase(),
-        ManyPasswords()
+        ManyPasswords(),
+        DefPass()
     ]
     
     data = []
@@ -44,7 +49,7 @@ def collect():
 
         data.append((classname, collected))
             
-def process(collected):
+def process(collected) -> None:
     pass
 
 def main():

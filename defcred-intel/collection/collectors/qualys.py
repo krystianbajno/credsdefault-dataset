@@ -9,7 +9,6 @@ from cli.messages import Messages
 import PyPDF2
 from io import BytesIO
 
-
 class QualysPDF(Collector):
     def run(self) -> List[Intel]:
         url = "https://cdn2.qualys.com/docs/qualys-vm-scanning-default-credentials.pdf"
@@ -43,11 +42,7 @@ class QualysPDF(Collector):
             if "Last updated: July  01, 202 4 " in page:
                 continue
             
-            pages.append(page)
-            print(page)
-
-            print("BREAK  \n\n\n\n")
-            
+            pages.append(page)            
             
         intel = IntelFactory.make({
             "label": label,
