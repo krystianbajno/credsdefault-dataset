@@ -11,6 +11,7 @@ from collection.collectors.qualys import QualysPDF
 from collection.collectors.passwords_database import PasswordsDatabase
 from collection.collectors.many_passwords import ManyPasswords
 from collection.collectors.defpass import DefPass
+from collection.collectors.custom import Custom
 from repository.intel_repository import IntelRepository
 from models.intel import Intel
 from typing import List
@@ -32,7 +33,8 @@ def collect() -> List[Intel]:
         QualysPDF(),
         PasswordsDatabase(),
         ManyPasswords(),
-        DefPass()
+        DefPass(),
+        Custom()
     ]
     
     data = []

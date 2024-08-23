@@ -1,0 +1,1 @@
+# http://scadasecuritybootcamp.com/SCADA-Default-Password-List.php
