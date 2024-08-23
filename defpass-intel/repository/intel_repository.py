@@ -13,15 +13,15 @@ class IntelRepository:
         return list([Intel.from_dict(data) for data in intels_dict])
 
     def get(self, classname) ->  List[Intel]:
-        with open(f"data/{classname}.json", "r") as hout:
+        with open(f"data/collection/{classname}.json", "r") as hout:
             deserialized = self.__deserialize_intels(hout.read())
             return deserialized
         
     def save(self, classname, intels: List[Intel]) -> None:
-        with open(f"data/{classname}.json", "w") as hout:
+        with open(f"data/collection/{classname}.json", "w") as hout:
             serialized = self.__serialize_intels(intels)
             hout.write(serialized)
         
     def already_collected(self, classname): 
-        return os.path.exists(f"data/{classname}.json")
+        return os.path.exists(f"data/collection/{classname}.json")
     

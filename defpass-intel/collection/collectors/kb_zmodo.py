@@ -1,0 +1,1 @@
+# https://kb.zmodo.com/index.php?action=artikel&cat=1&id=12&artlang=en

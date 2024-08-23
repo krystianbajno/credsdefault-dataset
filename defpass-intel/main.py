@@ -3,6 +3,12 @@ from collection.collectors.cirt_net import CirtNet
 from collection.collectors.default_creds_github_ihebski import DefaultCredsGithubIHebski
 from collection.collectors.seclists import SecLists
 from collection.collectors.routersploit_keys import RouterSploitKeys
+from collection.collectors.scadapass import ScadaPass
+from collection.collectors.default_password_github_lexus import DefaultPasswordGithubLexus
+from collection.collectors.ics_default_passwords import IcsDefaultPasswords
+from collection.collectors.qualys import QualysPDF
+from collection.collectors.passwords_database import PasswordsDatabase
+
 from repository.intel_repository import IntelRepository
 from cli.messages import Messages
 
@@ -14,7 +20,12 @@ def collect():
         CirtNet(),
         DefaultCredsGithubIHebski(),
         SecLists(),
-        RouterSploitKeys()
+        RouterSploitKeys(),
+        ScadaPass(),
+        DefaultPasswordGithubLexus(),
+        IcsDefaultPasswords(),
+        QualysPDF(),
+        PasswordsDatabase()
     ]
     
     data = []

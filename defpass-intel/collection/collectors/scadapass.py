@@ -5,15 +5,15 @@ from models.intel import Intel
 from factory.intel_factory import IntelFactory
 from cli.messages import Messages
 
-class DefaultCredsGithubIHebski(Collector):
+class ScadaPass(Collector):
     def run(self) -> List[Intel]:
-        url = "https://raw.githubusercontent.com/ihebski/DefaultCreds-cheat-sheet/main/DefaultCreds-Cheat-Sheet.csv"
-        label = "DefaultCredsGithubIHebski"
+        url = "https://raw.githubusercontent.com/scadastrangelove/SCADAPASS/master/scadapass.csv"
+        label = "SCADA_PASS"
         res = httpx.request("GET", url)
         print(Messages["collector.connected"](url))
         
-        # productvendor,username,password
-        pages = res.text.split("\n")[1:]
+        # Vendor,Device,Default password,Port,Device type,Protocol,Source
+        pages = res.text.split("\n")[6:]
         
         intel = IntelFactory.make({
             "label": label,
