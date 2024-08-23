@@ -2,12 +2,12 @@
 
 ## Process overview
 ### Intelligence lifecycle
-- 0. Planning
-- 1. Collection
-- 2. Processing
-- 3. Analysis
-- 4. Dissemination
-- 5. Feedback
+- 1. Planning
+- 2. Collection
+- 3. Processing
+- 4. Analysis
+- 5. Dissemination
+- 6. Feedback
 
 ### The collectors are collecting data from many sources. 
 `data/collection`
