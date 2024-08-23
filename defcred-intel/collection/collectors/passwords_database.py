@@ -12,7 +12,9 @@ class PasswordsDatabase(Collector):
     def run(self) -> List[Intel]:  
         url = "https://www.passwordsdatabase.com"
         res = httpx.request("GET", url)
+        
         print(Messages["collector.connected"](url))
+        
         data = BeautifulSoup(res.text, 'html.parser')
         td_tags = data.find_all('td')
         intels = []

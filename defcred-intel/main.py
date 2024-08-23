@@ -8,6 +8,7 @@ from collection.collectors.default_password_github_lexus import DefaultPasswordG
 from collection.collectors.ics_default_passwords import IcsDefaultPasswords
 from collection.collectors.qualys import QualysPDF
 from collection.collectors.passwords_database import PasswordsDatabase
+from collection.collectors.many_passwords import ManyPasswords
 
 from repository.intel_repository import IntelRepository
 from cli.messages import Messages
@@ -25,7 +26,8 @@ def collect():
         DefaultPasswordGithubLexus(),
         IcsDefaultPasswords(),
         QualysPDF(),
-        PasswordsDatabase()
+        PasswordsDatabase(),
+        ManyPasswords()
     ]
     
     data = []
