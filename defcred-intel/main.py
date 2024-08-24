@@ -12,7 +12,15 @@ from collection.collectors.passwords_database import PasswordsDatabase
 from collection.collectors.many_passwords import ManyPasswords
 from collection.collectors.defpass import DefPass
 from collection.collectors.custom import Custom
+from collection.collectors.kb_zmodo import KbZmodo
+from collection.collectors.another_default_creds_cheatsheet import IoTPassDefaultCheatSheat
+from collection.collectors.awesome_default_passwords import AwesomeDefaultPasswords
+from collection.collectors.stationx import StationX
+from collection.collectors.scada_security_bootcamp import ScadaSecurityBootcamp
+from collection.collectors.hackmd import HackMd
+from collection.collectors.default_router_passwordlist import DefaultRouterPasswordsList
 from repository.intel_repository import IntelRepository
+
 from models.intel import Intel
 from typing import List
 
@@ -22,6 +30,7 @@ def collect() -> List[Intel]:
     intel_repository = IntelRepository()
     
     collectors: List[Collector] = [
+        Custom(),
         DataRecovery(),
         CirtNet(),
         DefaultCredsGithubIHebski(),
@@ -34,7 +43,13 @@ def collect() -> List[Intel]:
         PasswordsDatabase(),
         ManyPasswords(),
         DefPass(),
-        Custom()
+        KbZmodo(),
+        IoTPassDefaultCheatSheat(),
+        AwesomeDefaultPasswords(),
+        StationX(),
+        ScadaSecurityBootcamp(),
+        HackMd(),
+        DefaultRouterPasswordsList()
     ]
     
     data = []

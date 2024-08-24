@@ -11,6 +11,7 @@ class CredentialsDict(TypedDict):
     password: Optional[str]
     source: Optional[str]
     method: Optional[str]
+    comment: Optional[str]
     
 class CredentialsEnum(enum):
     NO_DATA = "N/A"
@@ -27,5 +28,6 @@ class CredentialsFactory:
         credentials.set_source(params.get("source") or CredentialsEnum.NO_DATA)
         credentials.set_version(params.get("version") or CredentialsEnum.NO_DATA)
         credentials.set_method(params.get("method" or CredentialsEnum.NO_DATA))
+        credentials.set_comment(params.get["comment"] or CredentialsEnum.NO_DATA)
         
         return credentials
