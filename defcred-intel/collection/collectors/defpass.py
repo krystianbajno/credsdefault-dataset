@@ -30,6 +30,7 @@ class DefPass(Collector):
             div = soup.find('div', {'style': 'text-align: left;color:#fff;text-shadow: 0 1px 3px rgba(0, 0, 0, .5);'})
             if div:
                 content = str(div)
+                
                 intel = IntelFactory.make({
                     "label": combination,
                     "source": url,

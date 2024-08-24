@@ -20,6 +20,9 @@ from collection.collectors.scada_security_bootcamp import ScadaSecurityBootcamp
 from collection.collectors.hackmd import HackMd
 from collection.collectors.default_router_passwordlist import DefaultRouterPasswordsList
 from collection.collectors.redoracle import RedOracle
+from collection.collectors.russian_nastroyism_ru import NaistroiSamRu
+from collection.collectors.ip_cameras import Ipvm
+from collection.collectors.routerpasswords import RouterPasswords
 
 from repository.intel_repository import IntelRepository
 
@@ -52,7 +55,11 @@ def collect() -> List[Intel]:
         ScadaSecurityBootcamp(),
         HackMd(),
         DefaultRouterPasswordsList(),
-        RedOracle()
+        RedOracle(),
+        NaistroiSamRu(),
+        Ipvm(),
+        RouterPasswords(),
+        RouterNetwork()
     ]
     
     data = []
