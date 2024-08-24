@@ -31,7 +31,6 @@ class SecLists(Collector):
             ("MANUAL_Windows_BetterDefaultPasslist", "/danielmiessler/SecLists/master/Passwords/Default-Credentials/windows-betterdefaultpasslist.txt"),
             ("MANUAL_SAP_DefaultUsernames", "/danielmiessler/SecLists/master/Usernames/sap-default-usernames.txt")
         }
-        
     
     def run(self) -> List[Intel]:
         autourls = "https://github.com/danielmiessler/SecLists/tree/master/Passwords/Default-Credentials/Routers"

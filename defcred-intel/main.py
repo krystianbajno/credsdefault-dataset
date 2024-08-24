@@ -23,6 +23,8 @@ from collection.collectors.redoracle import RedOracle
 from collection.collectors.russian_nastroyism_ru import NaistroiSamRu
 from collection.collectors.ip_cameras import Ipvm
 from collection.collectors.routerpasswords import RouterPasswords
+from collection.collectors.router_network import RouterNetwork
+from collection.collectors.china_huawei import ChinaHuawei
 
 from repository.intel_repository import IntelRepository
 
@@ -59,7 +61,8 @@ def collect() -> List[Intel]:
         NaistroiSamRu(),
         Ipvm(),
         RouterPasswords(),
-        RouterNetwork()
+        RouterNetwork(),
+        ChinaHuawei()
     ]
     
     data = []
