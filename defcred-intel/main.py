@@ -19,6 +19,8 @@ from collection.collectors.stationx import StationX
 from collection.collectors.scada_security_bootcamp import ScadaSecurityBootcamp
 from collection.collectors.hackmd import HackMd
 from collection.collectors.default_router_passwordlist import DefaultRouterPasswordsList
+from collection.collectors.redoracle import RedOracle
+
 from repository.intel_repository import IntelRepository
 
 from models.intel import Intel
@@ -49,7 +51,8 @@ def collect() -> List[Intel]:
         StationX(),
         ScadaSecurityBootcamp(),
         HackMd(),
-        DefaultRouterPasswordsList()
+        DefaultRouterPasswordsList(),
+        RedOracle()
     ]
     
     data = []
