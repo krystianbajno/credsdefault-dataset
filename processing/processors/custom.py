@@ -14,7 +14,7 @@ class Custom(Processor):
                     credential = CredentialsFactory.make({
                         "manufacturer": credentials_data[0],
                         "model": credentials_data[1],
-                        "username": credentials_data[2],
+                        "login": credentials_data[2],
                         "password": credentials_data[3],
                         "role": credentials_data[4],
                         "source": intel.source                

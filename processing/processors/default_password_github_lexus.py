@@ -13,7 +13,7 @@ class DefaultPasswordGithubLexus(Processor):
                 try: 
                     credential = CredentialsFactory.make({
                         "vendor": credentials_data[0],
-                        "username": credentials_data[1],
+                        "login": credentials_data[1],
                         "password": credentials_data[2],
                         "comment": credentials_data[3]      
                     })

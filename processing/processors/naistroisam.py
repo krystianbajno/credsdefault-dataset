@@ -14,7 +14,7 @@ class NaistroiSamRu(Processor):
                     credential = CredentialsFactory.make({
                         "manufacturer": credentials_data[1],
                         "model": credentials_data[0],
-                        "username": credentials_data[2],
+                        "login": credentials_data[2],
                         "password": credentials_data[3],
                         "source": intel.source                
                     })

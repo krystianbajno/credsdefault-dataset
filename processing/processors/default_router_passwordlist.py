@@ -15,7 +15,7 @@ class DefaultRouterPasswordsList(Processor):
                         "manufacturer": credentials_data[0],
                         "model": credentials_data[1],
                         "method": credentials_data[2],
-                        "username": credentials_data[3],
+                        "login": credentials_data[3],
                         "password": credentials_data[4],
                         "source": intel.source                
                     })

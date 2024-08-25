@@ -18,7 +18,7 @@ class ManyPasswords(Processor):
                         "model": credentials_data[1],
                         "version": credentials_data[2],
                         "method": credentials_data[3],
-                        "username": credentials_data[4],
+                        "login": credentials_data[4],
                         "password": credentials_data[5],
                         "role": credentials_data[6],
                         "comment": credentials_data[7],

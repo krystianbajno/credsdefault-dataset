@@ -15,7 +15,7 @@ class ChinaHuawei(Processor):
                         "model": credentials_data[3],
                         "version": credentials_data[4],
                         "method": credentials_data[5],
-                        "username": credentials_data[6],
+                        "login": credentials_data[6],
                         "password": credentials_data[7],
                         "address": credentials_data[8],
                         "source": intel.source                

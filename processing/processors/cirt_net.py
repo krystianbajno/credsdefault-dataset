@@ -33,7 +33,7 @@ class CirtNet(Processor):
               
                 credential = CredentialsFactory.make({
                     "manufacturer": intel.label,
-                    "username": user_id,
+                    "login": user_id,
                     "password": password,
                     "role": level,
                     "comment": notes,

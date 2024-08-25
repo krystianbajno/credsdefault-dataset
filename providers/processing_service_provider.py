@@ -12,7 +12,7 @@ from processing.processors.china_forumywhack import ChinaForumyWhack
 from processing.processors.china_huawei import ChinaHuawei
 from processing.processors.default_password_github_lexus import DefaultPasswordGithubLexus
 from processing.processors.awesome_default_passwords import AwesomeDefaultPasswords
-from processing.processors.custom import Custom 
+from processing.processors.custom import Custom
 from processing.processors.default_router_passwordlist import DefaultRouterPasswordsList
 from processing.processors.scada_security_bootcamp import ScadaSecurityBootcamp
 from processing.processors.kb_zmodo import KbZmodo
@@ -21,21 +21,27 @@ from processing.processors.many_passwords import ManyPasswords
 from processing.processors.cirt_net import CirtNet
 from processing.processors.defpass import DefPass
 from processing.processors.data_recovery import DataRecovery
+from processing.processors.passwords_database import PasswordsDatabase
+from processing.processors.red_oracle import RedOracle
+from processing.processors.ip_cameras import Ipvm
+from processing.processors.qualys_pdf import QualysPDF
+from processing.processors.routersploit_keys import RouterSploitKeys
+from processing.processors.seclists import SecLists
 
 from typing import Dict, List
 
 def boot():
     processor_instances: List[Processor] = {
+        RedOracle(),
         Custom(),
         DataRecovery(),
         CirtNet(),
         DefaultCredsGithubIHebski(),
-        # SecLists(),
-        # RouterSploitKeys(),
-        # QualysPDF(),
-        # PasswordsDatabase(),
-        # RedOracle(),
-        # Ipvm(),
+        PasswordsDatabase(),
+        SecLists(),
+        RouterSploitKeys(),
+        QualysPDF(),
+        Ipvm(),
         ScadaPass(),
         DefaultPasswordGithubLexus(),
         IcsDefaultPasswords(),
