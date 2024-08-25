@@ -1,4 +1,5 @@
-from typing import List, Tuple
+from typing import List
+from collection.dto.intel_collection_result import IntelCollectionResult
 from repository.intel_repository import IntelRepository
 from collection.collector import Collector
 from models.intel import Intel
@@ -9,21 +10,20 @@ class CollectionService:
         self.collectors: List[Collector] = collectors
         self.intel_repository: IntelRepository = intel_repository
 
-    def collect(self) -> List[Tuple[str, List[Intel]]]:
-        data: List[Tuple[str, List[Intel]]] = []
+    def collect(self) -> List[IntelCollectionResult]:
+        data: List[IntelCollectionResult] = []
         
         for collector in self.collectors:
             classname: str = collector.__class__.__name__
-            collected: List[Intel]
             
             if self.intel_repository.already_collected(classname):
-                collected = self.intel_repository.get(classname)
+                collected: List[Intel] = self.intel_repository.get(classname)
                 print(Messages["repository.read_repository"](classname))
             else:
-                collected = collector.run()
+                collected: List[Intel] = collector.run()
                 self.intel_repository.save(classname, collected)
                 print(Messages["repository.save_repository"](classname))
 
-            data.append((classname, collected))
+            data.append(IntelCollectionResult(classname, collected))
             
         return data

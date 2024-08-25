@@ -25,35 +25,50 @@ class Credentials:
         self.port = port
         self.address = address
         
-    def set_manufacturer(self, manufacturer: str): 
+    def set_manufacturer(self, manufacturer: str) -> None: 
         self.manufacturer = manufacturer
     
     def set_role(self, role: str) -> None:
         self.role = role
     
-    def set_method(self, method):
+    def set_method(self, method: str) -> None:
         self.method = method
         
-    def set_version(self, version):
+    def set_version(self, version: str) -> None:
         self.version = version
         
-    def set_login(self, login):
+    def set_login(self, login: str) -> None:
         self.login = login
         
-    def set_password(self, password):
+    def set_password(self, password: str) -> None:
         self.password = password
         
-    def set_model(self, model):
+    def set_model(self, model: str) -> None:
         self.model = model
         
-    def set_source(self, source):
+    def set_source(self, source: str) -> None:
         self.source = source
         
-    def set_comment(self, comment):
+    def set_comment(self, comment: str) -> None:
         self.comment = comment
         
-    def set_port(self, port):
+    def set_port(self, port: str) -> None:
         self.port = port
         
-    def set_address(self, address):
+    def set_address(self, address: str) -> None:
         self.address = address
+        
+    def to_dict(self) -> dict:
+        return {
+            "manufacturer": self.manufacturer,
+            "model": self.model,
+            "version": self.version,
+            "role": self.role,
+            "login": self.login,
+            "password": self.password,
+            "method": self.method,
+            "source": self.source,
+            "comment": self.comment,
+            "port": self.port,
+            "address": self.address
+        }

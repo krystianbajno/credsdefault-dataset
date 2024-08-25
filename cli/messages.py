@@ -19,5 +19,8 @@ Messages = {
     "collector.connected": lambda base_url: f"{Colors.CYAN} {Colors.BOLD}Connected{Colors.RESET} to {base_url}",
     "collector.collected": lambda params: f"{Colors.GREEN} {Colors.BOLD}+ Collected {Colors.RESET} {sum_pages(params['intels'])} pages from {get_intels_source(params['intels'])}",
     "intel.progress": lambda params: f"{Colors.GREEN} {Colors.BOLD}[{params['count']}/{params['all']}]{Colors.RESET} collected from {Colors.BOLD}{params['intel'].source}{Colors.RESET}{Colors.BOLD}{Colors.CYAN}\nPreview:\n{Colors.RESET}{sum_intel_content(params['intel'])}\n",
-    "processing.processed": lambda params: f"{Colors.GREEN} {Colors.BOLD}{params["processor"]}{Colors.RESET} - processed {Colors.CYAN}{sum_credentials(params["credentials"])}{Colors.RESET} credentials."
+    "processing.processed": lambda params: f"{Colors.GREEN} {Colors.BOLD}{params["processor"]}{Colors.RESET} - processed {Colors.CYAN}{sum_credentials(params["credentials"])}{Colors.RESET} credentials.",
+    "postprocessing.exit": lambda credentials: f"{Colors.VIOLET}{Colors.BOLD}[POSTPROCESSING]{Colors.RESET} - On exit - returned total of {Colors.CYAN}{len(credentials)}{Colors.RESET} credentials.",
+    "postprocessing.entry": lambda credentials: f"{Colors.VIOLET}{Colors.BOLD}[POSTPROCESSING]{Colors.RESET} - On entry - got {Colors.CYAN}{len(credentials)}{Colors.RESET} credentials.",
+    "repository.save_results": lambda file: f"\n[{Colors.GREEN}{Colors.BOLD}+{Colors.RESET}] Saved results to {file}."
 }

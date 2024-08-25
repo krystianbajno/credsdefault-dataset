@@ -6,28 +6,27 @@ from repository.credentials_fs_saver import CredentialsFsSaver
 
 from collection.collection_service import CollectionService
 from processing.processing_service import ProcessingService
-from models.intel import Intel
+from collection.dto.intel_collection_result import IntelCollectionResult
+
 from models.credentials import Credentials
 
-from typing import Dict, List, Tuple
+from typing import Dict, List
 
 def main():
     collection_provider: Dict[str, object] = boot_collection()
-    collection_service: CollectionService = collection_provider[CollectionService.__class__]
-    
     processing_provider: Dict[str, object] = boot_processing()
-    processing_service: ProcessingService = processing_provider[ProcessingService.__class__]
-
     postprocessing_provider: Dict[str, object] = boot_postprocessing()
+    
+    collection_service: CollectionService = collection_provider[CollectionService.__class__]
+    processing_service: ProcessingService = processing_provider[ProcessingService.__class__]
     postprocessing_service: PostProcessingService = postprocessing_provider[PostProcessingService.__class__]
 
-    collected: List[Tuple[str, List[Intel]]] = collection_service.collect()
+    collected: List[IntelCollectionResult] = collection_service.collect()
     processed: List[Credentials] = processing_service.process(collected)
-    
-    processed = postprocessing_service.execute(processed)
+    postprocessed: List[Credentials] = postprocessing_service.execute(processed)
 
-    credentials_saver = CredentialsFsSaver(filepath="processed_credentials.json")
-    credentials_saver.save(processed)
+    credentials_saver: CredentialsFsSaver = CredentialsFsSaver(filepath="processed_credentials.json")
+    credentials_saver.save(postprocessed)
 
 if __name__ == "__main__":
     main()
