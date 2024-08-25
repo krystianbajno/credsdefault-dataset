@@ -3,6 +3,8 @@ from processing.processor import Processor
 from models.credentials import Credentials
 from models.intel import Intel
 from factory.credentials_factory import CredentialsFactory
+import csv
+from io import StringIO
 
 class SecLists(Processor):
     def process(self, intels: List[Intel]) -> List[Credentials]:
@@ -90,17 +92,18 @@ class SecLists(Processor):
         credentials = []
 
         for page in intel.pages:
-            data = page.split(",")
-            if len(data) >= 4:
-                credentials.append(
-                    CredentialsFactory.make({
-                        "manufacturer": data[0],
-                        "login": data[1],
-                        "password": data[2],
-                        "comment": data[3]
-                    })
-                )
-
+            reader = csv.reader(StringIO(page.strip()), quotechar='"', delimiter=',', skipinitialspace=True)
+            for row in reader:
+                if len(row) >= 4:
+                    manufacturer, login, password, comment = row[:4]
+                    credentials.append(
+                        CredentialsFactory.make({
+                            "manufacturer": manufacturer,
+                            "login": login,
+                            "password": password,
+                            "comment": comment
+                        })
+                    )
         return credentials
 
     def process_simple_list(self, intel: Intel) -> List[Credentials]:
@@ -119,19 +122,18 @@ class SecLists(Processor):
 
     def process_scada_list(self, intel: Intel) -> List[Credentials]:
         credentials = []
-        for page in intel.pages:
-            if "," in page:
-                parts = page.split(",", 2)
-                if len(parts) >= 3:
-                    manufacturer, device, login_password = parts[:3]
-                    if ":" in login_password:
-                        login, password = login_password.split(":", 1)
-                        credentials.append(
-                            CredentialsFactory.make({
-                                "manufacturer": manufacturer.strip(),
-                                "login": login.strip(),
-                                "password": password.strip(),
-                                "comment": f"Device: {device.strip()}"
-                            })
-                        )
+        reader = csv.reader(intel.pages, quotechar='"', delimiter=',', skipinitialspace=True)
+        for parts in reader:
+            if len(parts) >= 3:
+                manufacturer, device, login_password = parts[:3]
+                if ":" in login_password:
+                    login, password = login_password.split(":", 1)
+                    credentials.append(
+                        CredentialsFactory.make({
+                            "manufacturer": manufacturer.strip(),
+                            "login": login.strip(),
+                            "password": password.strip(),
+                            "comment": f"Device: {device.strip()}"
+                        })
+                    )
         return credentials
