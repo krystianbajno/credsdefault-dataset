@@ -10,16 +10,16 @@ The dataset contains information on services, vendors, systems, OT and IoT devic
 6. Feedback and Continuous Improvement	
 
 ### Data Collection from Multiple Sources	
-Data is gathered from a variety of sources, including PDF files, GitHub repositories, CSV files, ZIP files, and websites. The data collector retrieves this information from the internet, serializes it, and saves it in .json format to ensure preservation in case the collection process is interrupted.	
+Collects data from various sources (PDFs, GitHub, CSVs, ZIPs, websites), saves it in JSON format to prevent data loss.
 
 ### Data Processing	
-Each data collector has an associated processor. These processors analyze the information gathered by the collectors and extract relevant credentials.	
+Each collected data set is processed by a corresponding processor to extract credentials.
 
 ### Post-Processing	
-After the initial processing, post-processors further refine the data by loading the extracted credentials, sorting them, and removing any duplicates.	
+Refines the extracted credentials by sorting and removing duplicates.
 
 ### Saving the results	
-The final processed data is saved in a JSON file (`output.json`).	
+The processed data is saved into a final JSON file (`output.json`).
 
 ### Hosting the results	
-The resulting file is made available as a `Release`.
+The final JSON file is hosted as a `Release`.

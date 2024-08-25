@@ -25,7 +25,7 @@ def main():
     processed: List[Credentials] = processing_service.process(collected)
     postprocessed: List[Credentials] = postprocessing_service.execute(processed)
 
-    credentials_saver: CredentialsFsSaver = CredentialsFsSaver(filepath="processed_credentials.json")
+    credentials_saver: CredentialsFsSaver = CredentialsFsSaver(filepath="output.json")
     credentials_saver.save(postprocessed)
 
 if __name__ == "__main__":
