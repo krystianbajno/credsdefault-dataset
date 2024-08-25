@@ -1,90 +1,19 @@
-from collection.collector import Collector
-from collection.collectors.data_recovery import DataRecovery
-from collection.collectors.cirt_net import CirtNet
-from collection.collectors.default_creds_github_ihebski import DefaultCredsGithubIHebski
-from collection.collectors.seclists import SecLists
-from collection.collectors.routersploit_keys import RouterSploitKeys
-from collection.collectors.scadapass import ScadaPass
-from collection.collectors.default_password_github_lexus import DefaultPasswordGithubLexus
-from collection.collectors.ics_default_passwords import IcsDefaultPasswords
-from collection.collectors.qualys import QualysPDF
-from collection.collectors.passwords_database import PasswordsDatabase
-from collection.collectors.many_passwords import ManyPasswords
-from collection.collectors.defpass import DefPass
-from collection.collectors.custom import Custom
-from collection.collectors.kb_zmodo import KbZmodo
-from collection.collectors.another_default_creds_cheatsheet import IoTPassDefaultCheatSheat
-from collection.collectors.awesome_default_passwords import AwesomeDefaultPasswords
-from collection.collectors.stationx import StationX
-from collection.collectors.scada_security_bootcamp import ScadaSecurityBootcamp
-from collection.collectors.hackmd import HackMd
-from collection.collectors.default_router_passwordlist import DefaultRouterPasswordsList
-from collection.collectors.redoracle import RedOracle
-from collection.collectors.russian_nastroyism_ru import NaistroiSamRu
-from collection.collectors.ip_cameras import Ipvm
-from collection.collectors.routerpasswords import RouterPasswords
-from collection.collectors.router_network import RouterNetwork
-from collection.collectors.china_huawei import ChinaHuawei
+from collection.collection_service import CollectionService
+from providers.collection_service_provider import boot as boot_collection
+from providers.processing_service_provider import boot as boot_processing
 
-from repository.intel_repository import IntelRepository
-
-from models.intel import Intel
-from typing import List
-
-from cli.messages import Messages
-
-def collect() -> List[Intel]:
-    intel_repository = IntelRepository()
-    
-    collectors: List[Collector] = [
-        Custom(),
-        DataRecovery(),
-        CirtNet(),
-        DefaultCredsGithubIHebski(),
-        SecLists(),
-        RouterSploitKeys(),
-        ScadaPass(),
-        DefaultPasswordGithubLexus(),
-        IcsDefaultPasswords(),
-        QualysPDF(),
-        PasswordsDatabase(),
-        ManyPasswords(),
-        DefPass(),
-        KbZmodo(),
-        IoTPassDefaultCheatSheat(),
-        AwesomeDefaultPasswords(),
-        StationX(),
-        ScadaSecurityBootcamp(),
-        HackMd(),
-        DefaultRouterPasswordsList(),
-        RedOracle(),
-        NaistroiSamRu(),
-        Ipvm(),
-        RouterPasswords(),
-        RouterNetwork(),
-        ChinaHuawei()
-    ]
-    
-    data = []
-    for collector in collectors:
-        classname = collector.__class__.__name__
-        
-        if intel_repository.already_collected(classname):
-            collected = intel_repository.get(classname)
-            print(Messages["repository.read_repository"](classname))
-        else:
-            collected = collector.run()
-            intel_repository.save(classname, collected)
-            print(Messages["repository.save_repository"](classname))
-
-        data.append((classname, collected))
-            
-def process(collected) -> None:
-    pass
+from collection.collection_service import CollectionService
+from processing.processing_service import ProcessingService
 
 def main():
-    collected = collect()
-    process(collected)
+    collection_provider = boot_collection()
+    collection_service: CollectionService = collection_provider[CollectionService.__class__]
+    collected = collection_service.collect()
+    
+    processing_provider = boot_processing()
+    processing_service: ProcessingService = processing_provider[ProcessingService.__class__]
+
+    processed = processing_service.process(collected)
 
 if __name__ == "__main__":
     main()

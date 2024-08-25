@@ -1,4 +1,4 @@
-import enum
+from enum import Enum
 from typing import Optional, TypedDict
 from models.credentials import Credentials
 
@@ -12,8 +12,9 @@ class CredentialsDict(TypedDict):
     source: Optional[str]
     method: Optional[str]
     comment: Optional[str]
+    port: Optional[str]
     
-class CredentialsEnum(enum):
+class CredentialsEnum(Enum):
     NO_DATA = "N/A"
 
 class CredentialsFactory: 
@@ -27,7 +28,8 @@ class CredentialsFactory:
         credentials.set_role(params.get("role") or CredentialsEnum.NO_DATA)
         credentials.set_source(params.get("source") or CredentialsEnum.NO_DATA)
         credentials.set_version(params.get("version") or CredentialsEnum.NO_DATA)
-        credentials.set_method(params.get("method" or CredentialsEnum.NO_DATA))
-        credentials.set_comment(params.get["comment"] or CredentialsEnum.NO_DATA)
+        credentials.set_method(params.get("method") or CredentialsEnum.NO_DATA)
+        credentials.set_comment(params.get("comment") or CredentialsEnum.NO_DATA)
+        credentials.set_port(params.get("port") or CredentialsEnum.NO_DATA)
         
         return credentials
