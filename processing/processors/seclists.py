@@ -112,7 +112,7 @@ class SecLists(Processor):
                     CredentialsFactory.make({
                         "login": login,
                         "password": password,
-                        "manufacturer": intel.label.split("_")[1].lower()
+                        "model": intel.label.split("_")[1].lower()
                     })
                 )
         return credentials
