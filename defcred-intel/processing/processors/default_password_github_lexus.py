@@ -4,8 +4,7 @@ from models.credentials import Credentials
 from models.intel import Intel
 from factory.credentials_factory import CredentialsFactory
 
-# Vendor,Device,Default password,Port,Device type,Protocol,Source
-class ScadaPass(Processor):
+class DefaultPasswordGithubLexus(Processor):
     def process(self, intels: List[Intel]) -> List[Credentials]:
         credentials: List[Credentials] = []
         for intel in intels:
@@ -13,12 +12,10 @@ class ScadaPass(Processor):
                 credentials_data = page.split(",")
                 try: 
                     credential = CredentialsFactory.make({
-                        "manufacturer": credentials_data[0],
-                        "model": credentials_data[1],
+                        "vendor": credentials_data[0],
+                        "username": credentials_data[1],
                         "password": credentials_data[2],
-                        "port": credentials_data[3],
-                        "method": credentials_data[5],
-                        "source": intel.source                    
+                        "comment": credentials_data[3]      
                     })
                     
                     credentials.append(credential)
@@ -26,7 +23,5 @@ class ScadaPass(Processor):
                     continue
             
         return credentials
-        
-        
 
     

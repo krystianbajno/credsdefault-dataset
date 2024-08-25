@@ -10,7 +10,8 @@ class Credentials:
         method: str = None,
         source: str = None,
         comment: str = None,
-        port: str = None
+        port: str = None,
+        address: str = None
     ):
         self.manufacturer = manufacturer
         self.model = model
@@ -22,6 +23,7 @@ class Credentials:
         self.source = source
         self.comment = comment
         self.port = port
+        self.address = address
         
     def set_manufacturer(self, manufacturer: str): 
         self.manufacturer = manufacturer
@@ -52,3 +54,6 @@ class Credentials:
         
     def set_port(self, port):
         self.port = port
+        
+    def set_address(self, address):
+        self.address = address

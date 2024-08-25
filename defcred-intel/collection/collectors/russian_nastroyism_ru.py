@@ -8,7 +8,7 @@ from cli.messages import Messages
 import html
 
 class NaistroiSamRu(Collector):
-    def run(self):      
+    def run(self):
         url = "https://nastroisam.ru/router-passwords/"
         
         res = httpx.get(url, headers={"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0"}, timeout=None)
@@ -32,7 +32,7 @@ class NaistroiSamRu(Collector):
                 )
                     
         intel = IntelFactory.make({
-            "label": "HackMd|model:manufacturer:login:password",
+            "label": "Nastroisam|model:manufacturer:login:password",
             "pages": extracted_data,
             "source": url
         })

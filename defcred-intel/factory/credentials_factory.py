@@ -15,7 +15,7 @@ class CredentialsDict(TypedDict):
     port: Optional[str]
     
 class CredentialsEnum(Enum):
-    NO_DATA = "N/A"
+    NO_DATA = "-"
 
 class CredentialsFactory: 
     @staticmethod
@@ -31,5 +31,6 @@ class CredentialsFactory:
         credentials.set_method(params.get("method") or CredentialsEnum.NO_DATA)
         credentials.set_comment(params.get("comment") or CredentialsEnum.NO_DATA)
         credentials.set_port(params.get("port") or CredentialsEnum.NO_DATA)
+        credentials.set_address(params.get("address") or CredentialsEnum.NO_DATA)
         
         return credentials

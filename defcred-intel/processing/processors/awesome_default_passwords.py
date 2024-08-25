@@ -4,8 +4,7 @@ from models.credentials import Credentials
 from models.intel import Intel
 from factory.credentials_factory import CredentialsFactory
 
-# Vendor,Device,Default password,Port,Device type,Protocol,Source
-class ScadaPass(Processor):
+class AwesomeDefaultPasswords(Processor):
     def process(self, intels: List[Intel]) -> List[Credentials]:
         credentials: List[Credentials] = []
         for intel in intels:
@@ -15,10 +14,10 @@ class ScadaPass(Processor):
                     credential = CredentialsFactory.make({
                         "manufacturer": credentials_data[0],
                         "model": credentials_data[1],
-                        "password": credentials_data[2],
-                        "port": credentials_data[3],
-                        "method": credentials_data[5],
-                        "source": intel.source                    
+                        "username": credentials_data[2],
+                        "password": credentials_data[3],
+                        "comment": credentials_data[4],
+                        "source": intel.source                
                     })
                     
                     credentials.append(credential)
