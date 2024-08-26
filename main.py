@@ -10,7 +10,7 @@ from collection.dto.intel_collection_result import IntelCollectionResult
 
 from models.credentials import Credentials
 
-from typing import Dict, List
+from typing import List
 
 def main():
     collection_provider: CollectionServiceProviderType = boot_collection()
