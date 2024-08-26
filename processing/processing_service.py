@@ -12,7 +12,7 @@ class ProcessingService:
         processed: List[Credentials] = []
         
         for entry in intel_results:
-            processor = self.processors.get(entry.classname)
+            processor = self.processors.get(entry.identifier)
             if processor is None:
                 continue
 
