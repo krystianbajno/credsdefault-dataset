@@ -1,3 +1,7 @@
+# identifier (can be anything):
+#  - collector
+#  - processor
+
 mappings:
   DefaultCredsGithubIHebski:
     - collection.collectors.default_creds_github_ihebski.DefaultCredsGithubIHebski
