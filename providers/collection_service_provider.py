@@ -34,5 +34,4 @@ def boot() -> CollectionServiceProviderType:
     return {
         IntelRepository: intel_repository,
         CollectionService: collection_service,
-        "collectors": collectors,
     }
