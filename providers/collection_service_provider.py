@@ -26,6 +26,7 @@ from collection.collectors.routerpasswords import RouterPasswords
 from collection.collectors.router_network import RouterNetwork
 from collection.collectors.china_huawei import ChinaHuawei
 from collection.collectors.china_forumywhack import ChinaForumyWhack
+from collection.collectors.default_password_github_lexus_other import DefaultPasswordGithubLexusOther
 
 from collection.collection_service import CollectionService
 from repository.intel_repository import IntelRepository
@@ -44,6 +45,7 @@ def boot():
         RouterSploitKeys(),
         ScadaPass(),
         DefaultPasswordGithubLexus(),
+        DefaultPasswordGithubLexusOther(),
         IcsDefaultPasswords(),
         QualysPDF(),
         PasswordsDatabase(),

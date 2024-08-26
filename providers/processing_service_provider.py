@@ -27,6 +27,7 @@ from processing.processors.ip_cameras import Ipvm
 from processing.processors.qualys_pdf import QualysPDF
 from processing.processors.routersploit_keys import RouterSploitKeys
 from processing.processors.seclists import SecLists
+from processing.processors.default_password_github_lexus_other import DefaultPasswordGithubLexusOther
 
 from typing import Dict, List
 
@@ -44,6 +45,7 @@ def boot():
         Ipvm(),
         ScadaPass(),
         DefaultPasswordGithubLexus(),
+        DefaultPasswordGithubLexusOther(),
         IcsDefaultPasswords(),
         ManyPasswords(),
         DefPass(),
