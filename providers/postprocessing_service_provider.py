@@ -1,11 +1,16 @@
-from typing import Dict
-
+from typing import Dict, Type
 from postprocessing.actions.remove_duplicates import remove_duplicates
 from postprocessing.actions.sort_credentials import sort_credentials
 from postprocessing.postprocessing_service import PostProcessingService
 
-def boot() -> Dict[str, object]:
-    
+PostProcessingServiceProviderType = Dict [
+    Type [
+        PostProcessingService
+    ], 
+    PostProcessingService
+]
+
+def boot() -> PostProcessingServiceProviderType:
     actions = [
         remove_duplicates,
         lambda creds: sort_credentials(creds, "manufacturer", "model", "login"),

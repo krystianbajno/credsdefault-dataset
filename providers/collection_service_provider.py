@@ -1,9 +1,22 @@
-from typing import Dict, Any
+from typing import Dict, Union, Type
 from collection.collection_service import CollectionService
 from repository.intel_repository import IntelRepository
 from .provider import load_yaml_config
 
-def boot() -> Dict[Any, Any]:
+CollectionServiceProviderType = Dict [
+    Type [
+        Union [
+            IntelRepository,
+            CollectionService
+        ]
+    ], 
+    Union [
+        IntelRepository,
+        CollectionService
+    ]
+]
+
+def boot() -> CollectionServiceProviderType:
     mapping: Dict[str, list] = load_yaml_config('config/processor_for_service.yaml', "mappings")
     collectors: Dict[str, object] = {}
     

@@ -1,7 +1,7 @@
 from postprocessing.postprocessing_service import PostProcessingService
-from providers.collection_service_provider import boot as boot_collection
-from providers.processing_service_provider import boot as boot_processing
-from providers.postprocessing_service_provider import boot as boot_postprocessing
+from providers.collection_service_provider import CollectionServiceProviderType, boot as boot_collection
+from providers.processing_service_provider import ProcessingServiceProviderType, boot as boot_processing
+from providers.postprocessing_service_provider import PostProcessingServiceProviderType, boot as boot_postprocessing
 from repository.credentials_fs_saver import CredentialsFsSaver
 
 from collection.collection_service import CollectionService
@@ -13,9 +13,9 @@ from models.credentials import Credentials
 from typing import Dict, List
 
 def main():
-    collection_provider: Dict[str, object] = boot_collection()
-    processing_provider: Dict[str, object] = boot_processing()
-    postprocessing_provider: Dict[str, object] = boot_postprocessing()
+    collection_provider: CollectionServiceProviderType = boot_collection()
+    processing_provider: ProcessingServiceProviderType = boot_processing()
+    postprocessing_provider: PostProcessingServiceProviderType = boot_postprocessing()
     
     collection_service: CollectionService = collection_provider[CollectionService]
     processing_service: ProcessingService = processing_provider[ProcessingService]

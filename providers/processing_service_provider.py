@@ -1,8 +1,15 @@
-from typing import Dict, Any
+from typing import Dict, Type
 from processing.processing_service import ProcessingService
 from .provider import load_yaml_config
 
-def boot() -> Dict[Any, Any]:
+ProcessingServiceProviderType = Dict [
+    Type [
+        ProcessingService
+    ], 
+    ProcessingService
+]
+
+def boot() -> ProcessingServiceProviderType:
     mapping: Dict[str, list] = load_yaml_config('config/processor_for_service.yaml', "mappings")
     processors: Dict[str, object] = {}
     
