@@ -1,0 +1,85 @@
+mappings:
+  DefaultPasswordGithubIHebski:
+    - collection.collectors.default_creds_github_ihebski.DefaultCredsGithubIHebski
+    - processing.processors.default_creds_github_ihebski.DefaultCredsGithubIHebski
+  ScadaPass:
+    - collection.collectors.scadapass.ScadaPass
+    - processing.processors.scadapass.ScadaPass
+  HackMd:
+    - collection.collectors.hackmd.HackMd
+    - processing.processors.hackmd.HackMd
+  IoTPassDefaultCheatSheat:
+    - collection.collectors.another_default_creds_cheatsheet.IoTPassDefaultCheatSheat
+    - processing.processors.another_default_creds_cheatsheet.IoTPassDefaultCheatSheat
+  RouterPasswords:
+    - collection.collectors.routerpasswords.RouterPasswords
+    - processing.processors.routerpasswords.RouterPasswords
+  RouterNetwork:
+    - collection.collectors.router_network.RouterNetwork
+    - processing.processors.router_network.RouterNetwork
+  NaistroiSamRu:
+    - collection.collectors.russian_nastroyism_ru.NaistroiSamRu
+    - processing.processors.naistroisam.NaistroiSamRu
+  ChinaForumyWhack:
+    - collection.collectors.china_forumywhack.ChinaForumyWhack
+    - processing.processors.china_forumywhack.ChinaForumyWhack
+  ChinaHuawei:
+    - collection.collectors.china_huawei.ChinaHuawei
+    - processing.processors.china_huawei.ChinaHuawei
+  AwesomeDefaultPasswords:
+    - collection.collectors.awesome_default_passwords.AwesomeDefaultPasswords
+    - processing.processors.awesome_default_passwords.AwesomeDefaultPasswords
+  Custom:
+    - collection.collectors.custom.Custom
+    - processing.processors.custom.Custom
+  DefaultRouterPasswordsList:
+    - collection.collectors.default_router_passwordlist.DefaultRouterPasswordsList
+    - processing.processors.default_router_passwordlist.DefaultRouterPasswordsList
+  ScadaSecurityBootcamp:
+    - collection.collectors.scada_security_bootcamp.ScadaSecurityBootcamp
+    - processing.processors.scada_security_bootcamp.ScadaSecurityBootcamp
+  KbZmodo:
+    - collection.collectors.kb_zmodo.KbZmodo
+    - processing.processors.kb_zmodo.KbZmodo
+  IcsDefaultPasswords:
+    - collection.collectors.ics_default_passwords.IcsDefaultPasswords
+    - processing.processors.ics_default_passwords.IcsDefaultPasswords
+  ManyPasswords:
+    - collection.collectors.many_passwords.ManyPasswords
+    - processing.processors.many_passwords.ManyPasswords
+  CirtNet:
+    - collection.collectors.cirt_net.CirtNet
+    - processing.processors.cirt_net.CirtNet
+  DefPass:
+    - collection.collectors.defpass.DefPass
+    - processing.processors.defpass.DefPass
+  DataRecovery:
+    - collection.collectors.data_recovery.DataRecovery
+    - processing.processors.data_recovery.DataRecovery
+  PasswordsDatabase:
+    - collection.collectors.passwords_database.PasswordsDatabase
+    - processing.processors.passwords_database.PasswordsDatabase
+  RedOracle:
+    - collection.collectors.redoracle.RedOracle
+    - processing.processors.red_oracle.RedOracle
+  Ipvm:
+    - collection.collectors.ip_cameras.Ipvm
+    - processing.processors.ip_cameras.Ipvm
+  QualysPDF:
+    - collection.collectors.qualys.QualysPDF
+    - processing.processors.qualys_pdf.QualysPDF
+  RouterSploitKeys:
+    - collection.collectors.routersploit_keys.RouterSploitKeys
+    - processing.processors.routersploit_keys.RouterSploitKeys
+  SecLists:
+    - collection.collectors.seclists.SecLists
+    - processing.processors.seclists.SecLists
+  DefaultPasswordGithubLexus:
+    - collection.collectors.default_password_github_lexus.DefaultPasswordGithubLexus
+    - processing.processors.default_password_github_lexus.DefaultPasswordGithubLexus
+  DefaultPasswordGithubLexusOther:
+    - collection.collectors.default_password_github_lexus_other.DefaultPasswordGithubLexusOther
+    - processing.processors.default_password_github_lexus_other.DefaultPasswordGithubLexusOther
+  StationX:
+    - collection.collectors.stationx.StationX
+    - processing.processors.stationx.StationX
