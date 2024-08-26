@@ -17,9 +17,9 @@ def main():
     processing_provider: Dict[str, object] = boot_processing()
     postprocessing_provider: Dict[str, object] = boot_postprocessing()
     
-    collection_service: CollectionService = collection_provider[CollectionService.__class__]
-    processing_service: ProcessingService = processing_provider[ProcessingService.__class__]
-    postprocessing_service: PostProcessingService = postprocessing_provider[PostProcessingService.__class__]
+    collection_service: CollectionService = collection_provider[CollectionService]
+    processing_service: ProcessingService = processing_provider[ProcessingService]
+    postprocessing_service: PostProcessingService = postprocessing_provider[PostProcessingService]
 
     collected: List[IntelCollectionResult] = collection_service.collect()
     processed: List[Credentials] = processing_service.process(collected)

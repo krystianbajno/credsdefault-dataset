@@ -12,5 +12,5 @@ def boot() -> Dict[str, object]:
     ]
     
     return {
-        PostProcessingService.__class__: PostProcessingService(actions),
+        PostProcessingService: PostProcessingService(actions),
     }

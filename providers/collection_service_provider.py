@@ -70,7 +70,7 @@ def boot():
     collection_service = CollectionService(collectors, intel_repository)
     
     return {
-        IntelRepository.__class__: intel_repository,
-        CollectionService.__class__: collection_service,
+        IntelRepository: intel_repository,
+        CollectionService: collection_service,
         "collectors": collectors,
     }

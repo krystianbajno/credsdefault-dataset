@@ -32,7 +32,7 @@ from processing.processors.default_password_github_lexus_other import DefaultPas
 from typing import Dict, List
 
 def boot():
-    processor_instances: List[Processor] = {
+    processor_instances: List[Processor] = [
         RedOracle(),
         Custom(),
         DataRecovery(),
@@ -61,15 +61,12 @@ def boot():
         ChinaHuawei(),
         ChinaForumyWhack(),
         StationX()
-    }
-    
-    processors: Dict[str, Processor] = {}
-    
-    for processor_instance in processor_instances:
-        processors[processor_instance.__class__.__name__] = processor_instance
+    ]
+        
+    processors: Dict[str, Processor] = {p.__class__.__name__: p for p in processor_instances}
         
     processing_service = ProcessingService(processors)
     
     return {
-        ProcessingService.__class__: processing_service,
+        ProcessingService: processing_service,
     }
