@@ -7,15 +7,12 @@ from models.credentials import Credentials
 class ProcessingService:
     def __init__(self, processors: Dict[str, Processor]):
         self.processors = processors
-        
-    def get_processor_for(self, entry_classname: str):
-        return self.processors.get(entry_classname)
 
-    def process(self, intel: List[IntelCollectionResult]) -> List[Credentials]:
+    def process(self, intel_results: List[IntelCollectionResult]) -> List[Credentials]:
         processed: List[Credentials] = []
         
-        for entry in intel:
-            processor = self.get_processor_for(entry.classname)
+        for entry in intel_results:
+            processor = self.processors.get(entry.classname)
             if processor is None:
                 continue
 
