@@ -1,9 +1,10 @@
-from typing import List, Callable
+from typing import List
 from models.credentials import Credentials
 from cli.messages import Messages
+from .actions.credentials_action import CredentialsAction
 
 class PostProcessingService:
-    def __init__(self, actions: List[Callable[[List[Credentials]], List[Credentials]]]):
+    def __init__(self, actions: List[CredentialsAction]):
         self.actions = actions
 
     def execute(self, credentials: List[Credentials]) -> List[Credentials]:
