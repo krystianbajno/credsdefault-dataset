@@ -23,3 +23,10 @@ The processed data is saved into a final JSON file (`output.json`).
 
 ### Hosting the results	
 The final JSON file is hosted as a `Release`.
+
+
+## Web Version
+Check out the web search at [credsdefault-search](https://github.com/krystianbajno/credsdefault-search)
+
+## CLI Version
+Check out the CLI search at [credsdefault-cli](https://github.com/krystianbajno/credsdefault-cli)
