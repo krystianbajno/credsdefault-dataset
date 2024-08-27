@@ -3,17 +3,9 @@ from collection.collection_service import CollectionService
 from repository.intel_repository import IntelRepository
 from .provider import load_yaml_config
 
-CollectionServiceProviderType = Dict [
-    Type [
-        Union [
-            IntelRepository,
-            CollectionService
-        ]
-    ], 
-    Union [
-        IntelRepository,
-        CollectionService
-    ]
+CollectionServiceProviderType = Dict[
+    Type[Union[IntelRepository, CollectionService]], 
+    Union[IntelRepository, CollectionService]
 ]
 
 def boot() -> CollectionServiceProviderType:

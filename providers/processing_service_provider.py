@@ -2,10 +2,8 @@ from typing import Dict, Type
 from processing.processing_service import ProcessingService
 from .provider import load_yaml_config
 
-ProcessingServiceProviderType = Dict [
-    Type [
-        ProcessingService
-    ], 
+ProcessingServiceProviderType = Dict[
+    Type[ProcessingService], 
     ProcessingService
 ]
 
